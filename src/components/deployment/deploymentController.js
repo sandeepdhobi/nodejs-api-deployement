@@ -14,10 +14,16 @@ const validate = (req, res, next) => {
   if (errors.isEmpty()) {
     return next()
   }
+
+  //only for url check
+  if(!validUrl.isUri(req.body.url)){
+    return res.status(500).json({ message: "Url is not valid." });
+  }
+
   const extractedErrors = []
   errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }))
 
-  return res.status(422).json({
+  return res.status(500).json({
     errors: extractedErrors,
   })
 }

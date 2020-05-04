@@ -5,9 +5,14 @@ const router = new express.Router()
 
 router.post('/addDeployment', payloadValidationRules(), validate, async (req, res) => {
     try {
+        const singleDoc = await Deployment.find({url:req.body.url.trim()})
+        if(singleDoc.length > 0){
+            res.status(500).send({ message: "Url already exists." })
+            return
+        }
         const deployment = new Deployment(req.body);
         await deployment.save()
-        res.status(201).send({ message: "Added deployments", data: deployment })
+        res.status(200).send({ message: "Added deployments", data: deployment })
     } catch (e) {
         console.log(e);
         res.status(500).send(e)
