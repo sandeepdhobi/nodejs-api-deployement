@@ -7,7 +7,7 @@ router.post('/addDeployment', payloadValidationRules(), validate, async (req, re
     try {
         const singleDoc = await Deployment.find({url:req.body.url.trim()})
         if(singleDoc.length > 0){
-            res.status(400).send({ message: "Url already exists." })
+            res.status(201).send({ message: "Url already exists." })
             return
         }
         const deployment = new Deployment(req.body);
