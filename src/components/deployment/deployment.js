@@ -40,7 +40,7 @@ router.delete('/deleteDeployments/:id', async (req, res) => {
     try {
         const deployment = await Deployment.findById(req.params.id).remove()
         const deployments = await Deployment.find({})
-        res.status(200).send({ message: "deleted deployment", data: deployments })
+        res.status(200).send({ message: "deleted deployment from list", data: deployments })
     } catch (e) {
         res.status(500).send()
     }
