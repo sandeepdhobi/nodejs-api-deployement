@@ -11,12 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.849.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-validator": "^6.4.0",
     "lodash": "4.17.15",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.16",
+    "multer": "^1.4.2",
+    "sharp": "^0.27.2",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
